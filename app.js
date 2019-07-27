@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 app.post('/', uploadFile.single('file'), async function(req, res) {
-  fs.writeFileSync(path.join(__dirname, req.file.originalname), req.file.buffer);
+  fs.writeFileSync(path.join(__dirname, encodeURIComponent(req.file.originalname)), req.file.buffer);
   res.send('OK');
 });
 
